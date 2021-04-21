@@ -1,89 +1,92 @@
-# Mini Project: Project Tracker
+# Chris' Third-Party APIs: Work Day Scheduler
 
-In this project, you will work with others to create a project tracker application using Bootstrap, jQuery, jQueryUI, Moment, and Google Fonts. Break up these phases amongst members of your team.
 
-## Instructions
+## Your Task
 
-This mini-project is divided into four tasks. The first three tasks will get you to MVP, so focus on those first!
 
-### Task 1: HTML Build
 
-1. Create a header/hero area that welcomes users to the application and displays the current time and date using Moment.js with `setInterval()`.
+Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
 
-2. Create a Bootstrap card component explaining the instructions of how to use the app and a button to open a [Bootstrap modal dialog](https://getbootstrap.com/docs/4.5/components/modal/).
+You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
 
-3. The modal should contain a form asking users to fill in the following data:
+## User Story
 
-    * The name of the project
+```md
+AS AN employee with a busy schedule
+I WANT to add important events to a daily planner
+SO THAT I can manage my time effectively
+```
 
-    * The type of project (use a `<select>` drop-down)
+## Acceptance Criteria
 
-    * The hourly wage for the project
+```md
+GIVEN I am using a daily planner to create a schedule
+WHEN I open the planner
+THEN the current day is displayed at the top of the calendar
+WHEN I scroll down
+THEN I am presented with timeblocks for standard business hours
+WHEN I view the timeblocks for that day
+THEN each timeblock is color coded to indicate whether it is in the past, present, or future
+WHEN I click into a timeblock
+THEN I can enter an event
+WHEN I click the save button for that timeblock
+THEN the text for that event is saved in local storage
+WHEN I refresh the page
+THEN the saved events persist
+```
 
-    * The due date for the project (use jQuery UI's datepicker with a minimum date setting in place)
+The following animation demonstrates the application functionality:
 
-4. Include a Bootstrap table that the project's information can be printed to with columns for the following data:
+![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif)
 
-    * Project name
 
-    * Project type
+## Grading Requirements
 
-    * Hourly wage
+This homework is graded based on the following criteria: 
 
-    * Due date
+### Technical Acceptance Criteria: 40%
 
-    * Days until the due date (use Moment.js to calculate)
+* Satisfies all of the above acceptance criteria plus the following:
 
-    * Estimated total earned (hourly wage at 8 hours per day multiplied by the number of days until the due date)
+  * Uses a date utility library to work with date and time
 
-While you build, remember the following guidelines:
+### Deployment: 32%
 
-  * Ensure that any elements you need to interact with using JavaScript/jQuery are properly identified (e.g., form elements, the table body, etc.).
+* Application deployed at live URL
 
-  * Use different `<input>` element attributes to help enforce rules, like different `type` attribute values, minimum values, and required! See the [MDN web docs on the HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) for more guidance.
+* Application loads with no errors
 
-  * When in doubt, read the Bootstrap documentation.
+* Application GitHub URL submitted
 
----
+* GitHub repo contains application code
 
-### Task 2: Capture Form Data
+### Application Quality: 15%
 
-1. Using jQuery, set up functionality to capture the form's input elements on submit and use that data to create a new table row on the page.
+* Application user experience is intuitive and easy to navigate
 
-2. Select and save references to every DOM element we will interact with to a variable (i.e., `var projectFormEl = $("#project-form");`) so that we can use these elements later.
+* Application user interface style is clean and polished
 
-3. Attach a submit event listener to the `<form>` element using jQuery.
+* Application resembles the mock-up functionality provided in the homework instructions
 
-4. On submission, capture the four input values from the form and pass them to another function to handle printing project data. Having one function that captures the data and another that prints the data to the page's `<table>` element will improve code readability.
+### Repository Quality: 13%
 
----
+* Repository has a unique name
 
-### Task 3: Print Project Data to Page
+* Repository follows best practices for file structure and naming conventions
 
-1. Create a function that will accept the four input fields' data as arguments.
+* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-2. Create a table row (`<tr>`) element and save it to a variable.
+* Repository contains multiple descriptive commit messages
 
-3. Create a table detail (`<td>`) element for each of the table columns created in Task 1.
+* Repository contains quality README file with description, screenshot, and link to deployed application
 
-4. For printing the days to the due date, use Moment.js to calculate the difference between the due date and the current time in days. 
+## Review
 
-5. For printing the estimated total earned amount, assume that you work an eight-hour day. So multiply the hourly rate by 8 to get the daily rate, then multiply that value by how many days until the project is due to get the estimated total earned. 
+You are required to submit the following for review:
 
-6. Append all `<td>` elements to the table row created, then append the entire row to the `<tbody>` element on the page.
+* The URL of the deployed application
 
-7. Don't forget to close the modal when done!
+* The URL of the GitHub repository, with a unique name and a README describing the project
 
----
-
-### Task 4: Delete a Project From the Table
-
-1. Update the table to accommodate one more column without a name.
-
-2. When generating a new `<tr>` for a project, add one more `<td>` that holds a button for deleting a project from the list.
-
-3. Use jQuery event delegation to attach an event listener to each of those buttons so that when clicked, the parent `<tr>` element will be removed from the page.
-
----
-
+- - -
 © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
