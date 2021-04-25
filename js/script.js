@@ -41,20 +41,20 @@ function save(value) {
     function printStorageLocation() {
         let plansStorage = JSON.parse(localStorage.getItem("plansStorage")) || [];
         let printStorage = localStorage.getItem('plansStorage', JSON.stringify(plansStorage));
-        
+        // console.log("My Object ", plansStorage.timeblock.value);
 
         // for
-        let localTextArea = document.querySelector('#'+localStorage.getItem('timeblock'));
+        
+        console.log(localTextArea);
     }
 
 
 // checking the hour clock if the
 function clockChecker() {
-    console.log(hour);
+    // console.log(hour);
     // let tdTableColorChanger = document.querySelector("#tr"+j);
 
     for (var j = 9; j <= 17; j++ ){
-        // console.log(j);
         if (hour > j) {
             let tdTableColorChanger = document.querySelector("#tr"+j);
             tdTableColorChanger.style.backgroundColor = "red";
