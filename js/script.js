@@ -1,42 +1,65 @@
 
-// Header Date
-
-let today = moment();
-let TodaysDate = today.format("dddd, MMMM Do");
-$("#currentDay").text(TodaysDate);
 
 // Starts with V ends with ARIABLE
-let tr9El = document.querySelector("#tr9");
-let tr9txtEl = document.getElementById("9AM");
+let today = moment();
+let TodaysDate = today.format("dddd, MMMM Do");
+let tBodyEl = document.querySelector("#tableBody");
 let plansEl = $('.plans');
 let source = document.getElementById("currentDay");
 let clockValEl = $('.clockValidation');
-// 
+let dateTime = null;
+let time;
+
+
+
+// Modal Button
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
+
+// Header Date
+$("#currentDay").text(TodaysDate);
 // jQuery disable text area
 plansEl.prop('disabled', true);
 
+
 // tr9txtEl.value = source.innerText; 
 
-function updatePlans(plans) {
+function updatePlans(hour) {
+    event.preventDefault();
     if ( plansEl.prop('disabled') == true) {
-    plansEl.prop('disabled', false);
+        let divHour = hour - 9;
+        plansEl.prop('disabled', false);
+        console.log(divHour)
     console.log("set value to false");
 
-} 
-
+    } 
+}
 // save the text when insert stuff on the text box 
 function save(saveBtn) {
-    let schedulerStorage = JSON(localStorage.getItem("schedulerStorage")) || [];
+    // let schedulerStorage = JSON(localStorage.getItem("schedulerStorage")) || [];
 
 }
-
 
 // checking the hour clock if the
 function clockChecker() {
-    for ( let i = 0 ; clockValEl <= i ; i++ ) {
-
-        
-
+    
+    let hourNow = moment().format('HH');
+    console.log(hourNow);
+    // console.log(tBodyEl);
+    for (var i = 9 ; i <= 17; i++) {
+        console.log(i)
     }
-
 }
+
+clockChecker();
+
+
+// Save the input on the JSON
+function savePlans(save) {
+
+    console.log(save);
+}
+
+console.log(tBodyEl);
+
