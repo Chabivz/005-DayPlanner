@@ -40,12 +40,16 @@ function save(value) {
     // Printing out the local storage to our td's
     function printStorageLocation() {
         let plansStorage = JSON.parse(localStorage.getItem("plansStorage")) || [];
-        let printStorage = localStorage.getItem('plansStorage', JSON.stringify(plansStorage));
-        // console.log("My Object ", plansStorage.timeblock.value);
+        // let printStorage = localStorage.getItem('plansStorage', JSON.stringify(plansStorage));
+        // // console.log("My Object ", plansStorage.timeblock.value);
 
-        // for
+        // // for
         
-        console.log(localTextArea);
+        // console.log(localTextArea);
+
+        var printme = plansStorage[0].timeblock[1];
+        console.log(printme);
+        console.log(plansStorage.length);
     }
 
 
