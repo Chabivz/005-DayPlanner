@@ -1,65 +1,74 @@
+let today = moment();
+let TodaysDate = today.format("dddd, MMMM Do");
+let hour = today.format('HH');
 
 
 // Starts with V ends with ARIABLE
-let today = moment();
-let TodaysDate = today.format("dddd, MMMM Do");
-let tBodyEl = document.querySelector("#tableBody");
 let plansEl = $('.plans');
 let source = document.getElementById("currentDay");
 let clockValEl = $('.clockValidation');
-let dateTime = null;
-let time;
 
-
-
-// Modal Button
-$('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-  })
-
-// Header Date
-$("#currentDay").text(TodaysDate);
 // jQuery disable text area
 plansEl.prop('disabled', true);
 
+// Displaying the current date
+$("#currentDay").text(TodaysDate);
 
-// tr9txtEl.value = source.innerText; 
+// set textarea disable to false when clicked.
+function updatePlans(plans) {
 
-function updatePlans(hour) {
-    event.preventDefault();
     if ( plansEl.prop('disabled') == true) {
-        let divHour = hour - 9;
-        plansEl.prop('disabled', false);
-        console.log(divHour)
-    console.log("set value to false");
-
-    } 
+    plansEl.prop('disabled', false);
+    console.log("set value to false"+ plans);
+} 
 }
 // save the text when insert stuff on the text box 
-function save(saveBtn) {
-    // let schedulerStorage = JSON(localStorage.getItem("schedulerStorage")) || [];
-
+function save(value) {
+    let plansStorage = JSON.parse(localStorage.getItem("plansStorage")) || [];
+    let inputhour = new Date().getHours();
+    let inputTextArea = document.querySelector('#txt'+value).value.trim();
+    let newPlans = {
+        timeblock: value,
+        hourplan: inputTextArea,
+    }
+    console.log(inputTextArea);
+    plansStorage.push(newPlans);
+    localStorage.setItem('plansStorage',JSON.stringify(plansStorage));
+    
 }
+
+    // Printing out the local storage to our td's
+    function printStorageLocation() {
+        let plansStorage = JSON.parse(localStorage.getItem("plansStorage")) || [];
+        let printStorage = localStorage.getItem('plansStorage', JSON.stringify(plansStorage));
+        
+
+        // for
+        let localTextArea = document.querySelector('#'+localStorage.getItem('timeblock'));
+    }
+
 
 // checking the hour clock if the
 function clockChecker() {
-    
-    let hourNow = moment().format('HH');
-    console.log(hourNow);
-    // console.log(tBodyEl);
-    for (var i = 9 ; i <= 17; i++) {
-        console.log(i)
+    console.log(hour);
+    // let tdTableColorChanger = document.querySelector("#tr"+j);
+
+    for (var j = 9; j <= 17; j++ ){
+        // console.log(j);
+        if (hour > j) {
+            let tdTableColorChanger = document.querySelector("#tr"+j);
+            tdTableColorChanger.style.backgroundColor = "red";
+        } else if (hour == j) {
+            let tdTableColorChanger = document.querySelector("#tr"+j);
+            tdTableColorChanger.style.backgroundColor = "gray";
+        } else {
+            let tdTableColorChanger = document.querySelector("#tr"+j);
+            tdTableColorChanger.style.backgroundColor = "green";
+        }
     }
 }
 
-clockChecker();
+clockChecker()
+printStorageLocation();
 
-
-// Save the input on the JSON
-function savePlans(save) {
-
-    console.log(save);
-}
-
-console.log(tBodyEl);
 
