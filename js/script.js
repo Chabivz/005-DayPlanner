@@ -1,8 +1,15 @@
+// $(document).ready(function() {
 let today = moment();
 let TodaysDate = today.format("dddd, MMMM Do");
 let hour = today.format('HH');
 
-
+$('.saveBtn').on('click', function() {
+    const time = $(this).attr('id')
+    const value = $(this).siblings('td').children().val();
+    localStorage.setItem(time, value);
+    // console.log(time, value);
+    
+})
 // Starts with V ends with ARIABLE
 let plansEl = $('.plans');
 let source = document.getElementById("currentDay");
@@ -23,37 +30,50 @@ function updatePlans(plans) {
 } 
 }
 // save the text when insert stuff on the text box 
-function save(value) {
-    let plansStorage = JSON.parse(localStorage.getItem("plansStorage")) || [];
-    let inputhour = new Date().getHours();
-    let inputTextArea = document.querySelector('#txt'+value).value.trim();
-    let newPlans = {
-        timeblock: value,
-        hourplan: inputTextArea,
-    }
-    console.log(inputTextArea);
-    plansStorage.push(newPlans);
-    localStorage.setItem('plansStorage',JSON.stringify(plansStorage));
+// function save(value) {
+//     // console.log()
+//     // let time = $(this);
+//     // console.log(time);
+//     // let plansStorage = JSON.parse(localStorage.getItem("plansStorage")) || [];
+//     // let inputhour = new Date().getHours();
+//     let inputTextArea = document.querySelector('#txt'+value).value.trim();
+//     // let newPlans = {
+//     //     timeblock: value,
+//     //     hourplan: inputTextArea,
+//     // }
+//     // console.log(inputTextArea);
+//     // plansStorage.push(newPlans);
+//     localStorage.setItem(value, inputTextArea);
+//     // console.log(value, inputTextArea);
+// //     // localStorage.setItem()
+
+
     
-}
+// }
 
     // Printing out the local storage to our td's
     function printStorageLocation() {
         let plansStorage = JSON.parse(localStorage.getItem("plansStorage"));
         // let timeblockTxtEl = document.querySelector("#txt"+x);
-        var timeblockEl = plansStorage[0].timeblock[0].value;
+        var timeblockEl = plansStorage[0].timeblock[0];
         console.log("printMe Variable", timeblockEl);
-        console.log(plansStorage.length);
+        console.log(plansStorage);
 
-        for ( let x = 0; x <= plansStorage.length ; x++ ) {
-            let timeblockTxtEl = document.querySelector("#txt"+x);
-            timeblockEl = plansStorage[x].timeblock[0];
-            console.log(timeblockTxtEl);
-            // timeblockTxtEl.textContent = timeblockTxtEl;
-            // if (x == 9)
-            // x = '09';
-            console.log(x);
-        }
+
+
+        
+        // for ( let x = 0; x <= plansStorage.length ; x++ ) {
+        //     let timeblockTxtEl = document.querySelector("#txt"+x);
+
+
+
+        //     timeblockEl = plansStorage[x].timeblock[0];
+        //     console.log(timeblockTxtEl);
+        //     // timeblockTxtEl.textContent = timeblockTxtEl;
+        //     // if (x == 9)
+        //     // x = '09';
+        //     console.log(x);
+        // }
     }
 
 
@@ -76,7 +96,17 @@ function clockChecker() {
     }
 }
 
+
+for ( let i = 9 ; i <= 17 ; i++ ) {
+    // fix later
+    $(`#txt${i}`).val(localStorage.getItem(`${i}`)) ;
+}
+
+// $("#txt09").val(localStorage.getItem('09')) ;
+// console.log()
+
 clockChecker()
 printStorageLocation();
 
 
+// })
