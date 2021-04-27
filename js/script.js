@@ -19,7 +19,7 @@ function updatePlans(plans) {
 
     if ( plansEl.prop('disabled') == true) {
     plansEl.prop('disabled', false);
-    console.log("set value to false"+ plans);
+    // console.log("set value to false"+ plans);
 } 
 }
 // save the text when insert stuff on the text box 
@@ -39,17 +39,21 @@ function save(value) {
 
     // Printing out the local storage to our td's
     function printStorageLocation() {
-        let plansStorage = JSON.parse(localStorage.getItem("plansStorage")) || [];
-        // let printStorage = localStorage.getItem('plansStorage', JSON.stringify(plansStorage));
-        // // console.log("My Object ", plansStorage.timeblock.value);
-
-        // // for
-        
-        // console.log(localTextArea);
-
-        var printme = plansStorage[0].timeblock[1];
-        console.log(printme);
+        let plansStorage = JSON.parse(localStorage.getItem("plansStorage"));
+        // let timeblockTxtEl = document.querySelector("#txt"+x);
+        var timeblockEl = plansStorage[0].timeblock[0].value;
+        console.log("printMe Variable", timeblockEl);
         console.log(plansStorage.length);
+
+        for ( let x = 0; x <= plansStorage.length ; x++ ) {
+            let timeblockTxtEl = document.querySelector("#txt"+x);
+            timeblockEl = plansStorage[x].timeblock[0];
+            console.log(timeblockTxtEl);
+            // timeblockTxtEl.textContent = timeblockTxtEl;
+            // if (x == 9)
+            // x = '09';
+            console.log(x);
+        }
     }
 
 
