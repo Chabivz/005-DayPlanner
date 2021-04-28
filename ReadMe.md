@@ -22,3 +22,5 @@ To clear all the plans on the planner. You can click the button at the button ca
 Happy Coding! Thank you!
 
 ## Work Day Scheduler [IMG]
+
+[Work Day Planner GIF](./images/005-DayPlanner.gif)
